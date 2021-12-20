@@ -4,32 +4,25 @@ import Statistics from "./Statistics";
 import Section from "./Section";
 import Notification from "./Notification";
 
+const initialState = { good: 0, neutral: 0, bad: 0 };
+const options = ['good', 'neutral', 'bad']
 function Feedback() {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
-
+  const [state, setState] = useState(initialState);
   const onClickFeedback = (option) => {
-    if (option === "good") {
-      setGood((prevGood) => prevGood + 1);
-    }
-    if (option === "neutral") {
-      setNeutral((prevNeutral) => prevNeutral + 1);
-    }
-    if (option === "bad") {
-      setBad((prevBad) => prevBad + 1);
-    }
+    setState({ ...state, [option]: state[option] + 1 });
   };
 
-  const total = good + neutral + bad;
+  const total = state.good + state.neutral + state.bad;
 
-  const countPositiveFeedbackPercentage = Math.round((good / total) * 100);
+  const countPositiveFeedbackPercentage = Math.round(
+    (state.good / total) * 100
+  );
 
   return (
     <div>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          options={{ good, neutral, bad }}
+          options={options}
           onClick={onClickFeedback}
         />
         <h1>Statistics</h1>
@@ -37,9 +30,9 @@ function Feedback() {
           <Notification message="There is no feedback"></Notification>
         ) : (
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
+            good={state.good}
+            neutral={state.neutral}
+            bad={state.bad}
             total={total}
             positivePercentage={countPositiveFeedbackPercentage}
           />

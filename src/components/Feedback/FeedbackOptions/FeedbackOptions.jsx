@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import style from './FeedbackOptions.module.css'
 
 const FeedbackOptions = ({options, onClick}) => {
-    const elements = Object.keys(options).map(option => 
+    const elements = options.map(option => 
     <button 
     key={option} 
     onClick={() => onClick(option)}
