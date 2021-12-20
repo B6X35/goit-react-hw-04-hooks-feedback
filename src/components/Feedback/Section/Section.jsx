@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import style from "./Section.module.css";
-
+import { memo } from "react";
 const Section = ({ title, children }) => {
     return (
         <section className={style.section}>
@@ -10,7 +10,7 @@ const Section = ({ title, children }) => {
     )
 }
 
-export default Section;
+export default memo(Section);
 
 Section.proptype = {
     title: PropTypes.string.isRequired,

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import { memo } from "react";
 
 const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
     return (
@@ -13,7 +13,7 @@ const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
     )
 }
 
-export default Statistics;
+export default memo(Statistics);
 
 Statistics.propTypes = {
     good: PropTypes.number.isRequired,

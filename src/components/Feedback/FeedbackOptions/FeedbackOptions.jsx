@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import style from './FeedbackOptions.module.css'
-
+import { memo } from 'react';
 const FeedbackOptions = ({options, onClick}) => {
     const elements = options.map(option => 
     <button 
@@ -18,7 +18,7 @@ const FeedbackOptions = ({options, onClick}) => {
     )
 }
 
-export default FeedbackOptions;
+export default memo(FeedbackOptions);
 
 FeedbackOptions.propTypes = {
     onClick: PropTypes.func.isRequired,
